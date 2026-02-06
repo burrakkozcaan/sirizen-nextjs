@@ -1,0 +1,399 @@
+[
+  {
+    "id": 1,
+    "name": "Kadın",
+    "slug": "kadin",
+    "icon": "👗",
+    "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400",
+    "parent_id": null,
+    "product_count": 125000
+  },
+  {
+    "id": 11,
+    "name": "Giyim",
+    "slug": "kadin-giyim",
+    "icon": null,
+    "image": null,
+    "parent_id": 1,
+    "product_count": 45000
+  },
+  {
+    "id": 12,
+    "name": "Ayakkabı",
+    "slug": "kadin-ayakkabi",
+    "icon": null,
+    "image": null,
+    "parent_id": 1,
+    "product_count": 28000
+  },
+  {
+    "id": 13,
+    "name": "Çanta",
+    "slug": "kadin-canta",
+    "icon": null,
+    "image": null,
+    "parent_id": 1,
+    "product_count": 15000
+  },
+  {
+    "id": 14,
+    "name": "Aksesuar",
+    "slug": "kadin-aksesuar",
+    "icon": null,
+    "image": null,
+    "parent_id": 1,
+    "product_count": 22000
+  },
+  {
+    "id": 15,
+    "name": "Saat",
+    "slug": "kadin-saat",
+    "icon": null,
+    "image": null,
+    "parent_id": 1,
+    "product_count": 8000
+  },
+  {
+    "id": 2,
+    "name": "Erkek",
+    "slug": "erkek",
+    "icon": "👔",
+    "image": "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=400",
+    "parent_id": null,
+    "product_count": 98000
+  },
+  {
+    "id": 21,
+    "name": "Giyim",
+    "slug": "erkek-giyim",
+    "icon": null,
+    "image": null,
+    "parent_id": 2,
+    "product_count": 35000
+  },
+  {
+    "id": 22,
+    "name": "Ayakkabı",
+    "slug": "erkek-ayakkabi",
+    "icon": null,
+    "image": null,
+    "parent_id": 2,
+    "product_count": 22000
+  },
+  {
+    "id": 23,
+    "name": "Aksesuar",
+    "slug": "erkek-aksesuar",
+    "icon": null,
+    "image": null,
+    "parent_id": 2,
+    "product_count": 18000
+  },
+  {
+    "id": 24,
+    "name": "Saat",
+    "slug": "erkek-saat",
+    "icon": null,
+    "image": null,
+    "parent_id": 2,
+    "product_count": 12000
+  },
+  {
+    "id": 3,
+    "name": "Anne & Çocuk",
+    "slug": "anne-cocuk",
+    "icon": "👶",
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400",
+    "parent_id": null,
+    "product_count": 65000
+  },
+  {
+    "id": 31,
+    "name": "Bebek Giyim",
+    "slug": "bebek-giyim",
+    "icon": null,
+    "image": null,
+    "parent_id": 3,
+    "product_count": 18000
+  },
+  {
+    "id": 32,
+    "name": "Çocuk Giyim",
+    "slug": "cocuk-giyim",
+    "icon": null,
+    "image": null,
+    "parent_id": 3,
+    "product_count": 25000
+  },
+  {
+    "id": 33,
+    "name": "Oyuncak",
+    "slug": "oyuncak",
+    "icon": null,
+    "image": null,
+    "parent_id": 3,
+    "product_count": 15000
+  },
+  {
+    "id": 4,
+    "name": "Ev & Yaşam",
+    "slug": "ev-yasam",
+    "icon": "🏠",
+    "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400",
+    "parent_id": null,
+    "product_count": 85000
+  },
+  {
+    "id": 41,
+    "name": "Mobilya",
+    "slug": "mobilya",
+    "icon": null,
+    "image": null,
+    "parent_id": 4,
+    "product_count": 20000
+  },
+  {
+    "id": 42,
+    "name": "Ev Tekstili",
+    "slug": "ev-tekstili",
+    "icon": null,
+    "image": null,
+    "parent_id": 4,
+    "product_count": 30000
+  },
+  {
+    "id": 43,
+    "name": "Dekorasyon",
+    "slug": "dekorasyon",
+    "icon": null,
+    "image": null,
+    "parent_id": 4,
+    "product_count": 25000
+  },
+  {
+    "id": 44,
+    "name": "Mutfak",
+    "slug": "mutfak",
+    "icon": null,
+    "image": null,
+    "parent_id": 4,
+    "product_count": 10000
+  },
+  {
+    "id": 5,
+    "name": "Süpermarket",
+    "slug": "supermarket",
+    "icon": "🛒",
+    "image": "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400",
+    "parent_id": null,
+    "product_count": 45000
+  },
+  {
+    "id": 51,
+    "name": "Gıda",
+    "slug": "gida",
+    "icon": null,
+    "image": null,
+    "parent_id": 5,
+    "product_count": 20000
+  },
+  {
+    "id": 52,
+    "name": "İçecek",
+    "slug": "icecek",
+    "icon": null,
+    "image": null,
+    "parent_id": 5,
+    "product_count": 8000
+  },
+  {
+    "id": 53,
+    "name": "Temizlik",
+    "slug": "temizlik",
+    "icon": null,
+    "image": null,
+    "parent_id": 5,
+    "product_count": 12000
+  },
+  {
+    "id": 6,
+    "name": "Kozmetik",
+    "slug": "kozmetik",
+    "icon": "💄",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+    "parent_id": null,
+    "product_count": 55000
+  },
+  {
+    "id": 61,
+    "name": "Makyaj",
+    "slug": "makyaj",
+    "icon": null,
+    "image": null,
+    "parent_id": 6,
+    "product_count": 20000
+  },
+  {
+    "id": 62,
+    "name": "Cilt Bakımı",
+    "slug": "cilt-bakimi",
+    "icon": null,
+    "image": null,
+    "parent_id": 6,
+    "product_count": 18000
+  },
+  {
+    "id": 63,
+    "name": "Parfüm",
+    "slug": "parfum",
+    "icon": null,
+    "image": null,
+    "parent_id": 6,
+    "product_count": 10000
+  },
+  {
+    "id": 64,
+    "name": "Saç Bakımı",
+    "slug": "sac-bakimi",
+    "icon": null,
+    "image": null,
+    "parent_id": 6,
+    "product_count": 7000
+  },
+  {
+    "id": 7,
+    "name": "Ayakkabı & Çanta",
+    "slug": "ayakkabi-canta",
+    "icon": "👠",
+    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400",
+    "parent_id": null,
+    "product_count": 72000
+  },
+  {
+    "id": 71,
+    "name": "Kadın Ayakkabı",
+    "slug": "kadin-ayakkabi-2",
+    "icon": null,
+    "image": null,
+    "parent_id": 7,
+    "product_count": 25000
+  },
+  {
+    "id": 72,
+    "name": "Erkek Ayakkabı",
+    "slug": "erkek-ayakkabi-2",
+    "icon": null,
+    "image": null,
+    "parent_id": 7,
+    "product_count": 20000
+  },
+  {
+    "id": 73,
+    "name": "Çanta",
+    "slug": "canta",
+    "icon": null,
+    "image": null,
+    "parent_id": 7,
+    "product_count": 18000
+  },
+  {
+    "id": 74,
+    "name": "Cüzdan",
+    "slug": "cuzdan",
+    "icon": null,
+    "image": null,
+    "parent_id": 7,
+    "product_count": 9000
+  },
+  {
+    "id": 8,
+    "name": "Elektronik",
+    "slug": "elektronik",
+    "icon": "📱",
+    "image": "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=400",
+    "parent_id": null,
+    "product_count": 42000
+  },
+  {
+    "id": 81,
+    "name": "Telefon",
+    "slug": "telefon",
+    "icon": null,
+    "image": null,
+    "parent_id": 8,
+    "product_count": 8000
+  },
+  {
+    "id": 82,
+    "name": "Bilgisayar",
+    "slug": "bilgisayar",
+    "icon": null,
+    "image": null,
+    "parent_id": 8,
+    "product_count": 12000
+  },
+  {
+    "id": 83,
+    "name": "TV & Ses",
+    "slug": "tv-ses",
+    "icon": null,
+    "image": null,
+    "parent_id": 8,
+    "product_count": 10000
+  },
+  {
+    "id": 84,
+    "name": "Aksesuar",
+    "slug": "elektronik-aksesuar",
+    "icon": null,
+    "image": null,
+    "parent_id": 8,
+    "product_count": 12000
+  },
+  {
+    "id": 9,
+    "name": "Spor & Outdoor",
+    "slug": "spor-outdoor",
+    "icon": "⚽",
+    "image": "https://images.unsplash.com/photo-1461896836934-voices-color-scheme-7?w=400",
+    "parent_id": null,
+    "product_count": 38000
+  },
+  {
+    "id": 91,
+    "name": "Spor Giyim",
+    "slug": "spor-giyim",
+    "icon": null,
+    "image": null,
+    "parent_id": 9,
+    "product_count": 15000
+  },
+  {
+    "id": 92,
+    "name": "Spor Ayakkabı",
+    "slug": "spor-ayakkabi",
+    "icon": null,
+    "image": null,
+    "parent_id": 9,
+    "product_count": 12000
+  },
+  {
+    "id": 93,
+    "name": "Outdoor",
+    "slug": "outdoor",
+    "icon": null,
+    "image": null,
+    "parent_id": 9,
+    "product_count": 8000
+  },
+  {
+    "id": 94,
+    "name": "Fitness",
+    "slug": "fitness",
+    "icon": null,
+    "image": null,
+    "parent_id": 9,
+    "product_count": 3000
+  }
+]
+

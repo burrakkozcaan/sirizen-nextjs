@@ -1,0 +1,147 @@
+[
+  {
+    "id": 1,
+    "product_id": 1,
+    "url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600",
+    "alt": "T-shirt front",
+    "is_primary": true,
+    "order": 1
+  },
+  {
+    "id": 2,
+    "product_id": 1,
+    "url": "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600",
+    "alt": "T-shirt back",
+    "is_primary": false,
+    "order": 2
+  },
+  {
+    "id": 3,
+    "product_id": 1,
+    "url": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600",
+    "alt": "T-shirt detail",
+    "is_primary": false,
+    "order": 3
+  },
+  {
+    "id": 4,
+    "product_id": 2,
+    "url": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600",
+    "alt": "Jean front",
+    "is_primary": true,
+    "order": 1
+  },
+  {
+    "id": 5,
+    "product_id": 2,
+    "url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600",
+    "alt": "Jean back",
+    "is_primary": false,
+    "order": 2
+  },
+  {
+    "id": 6,
+    "product_id": 3,
+    "url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600",
+    "alt": "Nike side",
+    "is_primary": true,
+    "order": 1
+  },
+  {
+    "id": 7,
+    "product_id": 3,
+    "url": "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600",
+    "alt": "Nike top",
+    "is_primary": false,
+    "order": 2
+  },
+  {
+    "id": 8,
+    "product_id": 3,
+    "url": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600",
+    "alt": "Nike pair",
+    "is_primary": false,
+    "order": 3
+  },
+  {
+    "id": 9,
+    "product_id": 4,
+    "url": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600",
+    "alt": "Bag front",
+    "is_primary": true,
+    "order": 1
+  },
+  {
+    "id": 10,
+    "product_id": 4,
+    "url": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600",
+    "alt": "Bag detail",
+    "is_primary": false,
+    "order": 2
+  },
+  {
+    "id": 11,
+    "product_id": 5,
+    "url": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600",
+    "alt": "Shirt front",
+    "is_primary": true,
+    "order": 1
+  },
+  {
+    "id": 12,
+    "product_id": 5,
+    "url": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600",
+    "alt": "Shirt detail",
+    "is_primary": false,
+    "order": 2
+  },
+  {
+    "id": 13,
+    "product_id": 6,
+    "url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600",
+    "alt": "Jean front",
+    "is_primary": true,
+    "order": 1
+  },
+  {
+    "id": 14,
+    "product_id": 6,
+    "url": "https://images.unsplash.com/photo-1475178626620-a4d074967452?w=600",
+    "alt": "Jean detail",
+    "is_primary": false,
+    "order": 2
+  },
+  {
+    "id": 15,
+    "product_id": 7,
+    "url": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600",
+    "alt": "Sweatshirt front",
+    "is_primary": true,
+    "order": 1
+  },
+  {
+    "id": 16,
+    "product_id": 7,
+    "url": "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=600",
+    "alt": "Sweatshirt back",
+    "is_primary": false,
+    "order": 2
+  },
+  {
+    "id": 17,
+    "product_id": 8,
+    "url": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600",
+    "alt": "Trench front",
+    "is_primary": true,
+    "order": 1
+  },
+  {
+    "id": 18,
+    "product_id": 8,
+    "url": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600",
+    "alt": "Trench detail",
+    "is_primary": false,
+    "order": 2
+  }
+]
+
