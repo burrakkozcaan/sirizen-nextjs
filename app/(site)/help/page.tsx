@@ -260,10 +260,10 @@ export default function HelpPage() {
 
   return (
     <>
-      {/* Zoho SalesIQ - Sadece bu sayfada */}
+      {/* Zoho SalesIQ - Yardım sayfasında canlı destek widget'ı */}
       <Script
         id="zoho-salesiq-init"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}};`,
         }}

@@ -67,7 +67,7 @@ export function QuickViewModal({ product, open, onOpenChange }: QuickViewModalPr
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl p-0 gap-0 overflow-hidden [&>button]:hidden">
+      <DialogContent className="max-w-4xl p-0 gap-0 overflow-hidden" showCloseButton={false}>
         {/* Kapatma butonu - çarpı */}
         <Button
           variant="secondary"
