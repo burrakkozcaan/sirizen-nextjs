@@ -114,8 +114,8 @@ function buildMockPdpResponse(
       })),
     },
     pricing: {
-      price: product.price,
-      sale_price: product.discount_price || null,
+      price: product.original_price || product.price,
+      sale_price: product.original_price ? product.price : null,
       original_price: product.original_price || null,
       discount_percentage: product.discount_percentage || null,
       currency: 'TRY',
@@ -200,8 +200,8 @@ function buildVariantConfig(product: any, categoryGroup: string) {
         combinations.push({
           id: sIdx * colors.length + cIdx + 1,
           sku: `${product.slug}-${size}-${color.value}`.toUpperCase(),
-          price: product.discount_price || product.price,
-          sale_price: product.discount_price || null,
+          price: product.original_price || product.price,
+          sale_price: product.original_price ? product.price : null,
           stock: Math.floor(Math.random() * 20) + 1,
           is_default: size === 'M' && color.value === 'siyah',
           attributes: { beden: size, renk: color.value },
@@ -263,7 +263,7 @@ function buildVariantConfig(product: any, categoryGroup: string) {
       combinations: storages.map((storage, idx) => ({
         id: idx + 1,
         sku: `${product.slug}-${storage}`.toUpperCase(),
-        price: (product.discount_price || product.price) + (idx * 1000),
+        price: product.price + (idx * 1000),
         sale_price: null,
         stock: Math.floor(Math.random() * 15) + 5,
         is_default: idx === 1,
