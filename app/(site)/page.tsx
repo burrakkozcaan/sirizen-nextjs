@@ -297,7 +297,7 @@ export default async function HomePage() {
             </h3>
             <div className="flex flex-wrap gap-2">
               {[
-                "Kadın Fiyatları",
+                "Moda",
                 "Erkek Modelleri",
                 "Çocuk Ürünleri",
                 "Ev & Yaşam",
