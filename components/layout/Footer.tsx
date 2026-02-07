@@ -27,7 +27,7 @@ export function Footer() {
   return (
     <>
       <PopularBrandsSection />
-      <div className="container-home relative z-10 mb-4 mt-6 mx-auto">
+      <div className="container-home relative z-10 mb-4 mt-6 lg:mx-10">
         <footer className="rounded-2xl border border-border bg-muted p-6 sm:p-8 md:p-10 lg:p-14">
           <nav className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-6">
             {/* Logo & Theme Toggle */}

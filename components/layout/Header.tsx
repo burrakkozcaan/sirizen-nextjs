@@ -12,6 +12,7 @@ import {
   LogOut,
   Grid3X3,
   ChevronRight,
+  Store,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -123,13 +124,16 @@ export function Header() {
 
       <header className="sticky top-0 z-50 bg-background shadow-header">
         {/* Top bar */}
-        <div className="bg-muted/50 hidden lg:block">
-          <div className="container mx-auto px-4 py-1.5 flex justify-end items-center text-xs text-muted-foreground gap-6">
+        <div className="bg-muted/50">
+          <div className="container mx-auto px-4 py-1.5 flex justify-end items-center text-xs text-muted-foreground gap-4 sm:gap-6">
             <Link
-              href="/about"
-              className="hover:text-foreground transition-colors"
+              href="https://api.sirizen.com/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors font-medium flex items-center gap-1"
             >
-              Hakkımızda
+              <Store className="h-3.5 w-3.5" />
+              Satıcı Ol
             </Link>
             <Link
               href="/help"
@@ -335,7 +339,7 @@ export function Header() {
           >
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-orange-500" />
-              <div className="w-full pl-10 pr-4 h-10 border-2 border-muted bg-muted/30 flex items-center text-muted-foreground rounded-full">
+              <div className="w-full pl-10 pr-4 h-10 border-2 border-muted bg-white flex items-center text-muted-foreground rounded-full">
                 <span className="text-sm" style={{ minHeight: "1.2em" }}>
                   Ürün, kategori veya marka ara
                 </span>
