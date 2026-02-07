@@ -31,7 +31,7 @@ import { HomeEngine } from "@/components/home/HomeEngine";
 import { HomeClient } from "./HomeClient";
 
 export const metadata = {
-  title: "Bazaar Hub - Online Alışveriş",
+  title: "Sirizen - Online Alışveriş",
   description: "En iyi fiyatlarla binlerce ürün",
 };
 
