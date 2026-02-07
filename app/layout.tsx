@@ -19,8 +19,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sirizen - Alışverişin Yeni Adresi",
-  description: "Sirizen ile binlerce ürünü keşfedin, hızlı teslimat ve güvenli ödeme avantajlarıyla alışveriş yapın.",
+  title: {
+    default: "Sirizen | Türkiye'nin Yeni Nesil Alışveriş Platformu",
+    template: "%s | Sirizen",
+  },
+  description:
+    "Moda, elektronik, ev & yaşam, kozmetik ve daha fazlası — Sirizen'de binlerce mağaza ve milyonlarca ürün. Hızlı teslimat, güvenli ödeme ve kampanyalarla alışverişin keyfini çıkarın.",
+  icons: {
+    icon: "/sirizen-logo.svg",
+    apple: "/sirizen-logo.svg",
+  },
 };
 
 export default function RootLayout({
