@@ -15,6 +15,10 @@ try {
 
 const nextConfig: NextConfig = {
   images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
     remotePatterns: [
       ...(backendUrl
         ? [
@@ -55,10 +59,7 @@ const nextConfig: NextConfig = {
       { protocol: "http", hostname: "127.0.0.1", port: "8000", pathname: "/**" },
     ],
   },
-  // React Compiler - experimental, şimdilik kapalı
-  // experimental: {
-  //   reactCompiler: true,
-  // },
+  reactCompiler: true,
 };
 
 export default nextConfig;

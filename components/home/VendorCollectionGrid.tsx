@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { resolveMediaUrl } from "@/lib/media";
 import { cn } from "@/lib/utils";
@@ -72,15 +73,18 @@ function VendorCollectionCard({ collection }: VendorCollectionCardProps) {
               <div
                 key={`${collection.id}-${product.id || index}-${index}`}
                 className={cn(
-                  "flex-1 overflow-hidden bg-gray-50",
+                  "flex-1 overflow-hidden bg-gray-50 relative",
                   index === 0 ? "border-r border-gray-100" : ""
                 )}
               >
                 {imageUrl ? (
-                  <img
+                  <Image
                     src={imageUrl}
                     alt={product.name || `Ürün ${index + 1}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    sizes="(max-width: 768px) 22vw, 12vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs bg-gray-100">
@@ -111,11 +115,14 @@ function VendorCollectionCard({ collection }: VendorCollectionCardProps) {
           {/* Top: Brand Logo & Name */}
           <div className="flex items-center gap-2 mb-2 pr-5">
             {collection.vendor.logo ? (
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded bg-white border border-gray-100 flex items-center justify-center overflow-hidden flex-shrink-0">
-                <img
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded bg-white border border-gray-100 flex items-center justify-center overflow-hidden flex-shrink-0 relative">
+                <Image
                   src={resolveMediaUrl(collection.vendor.logo)}
                   alt={collection.vendor.name}
-                  className="w-full h-full object-contain p-0.5"
+                  fill
+                  sizes="40px"
+                  className="object-contain p-0.5"
+                  loading="lazy"
                 />
               </div>
             ) : (

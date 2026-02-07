@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Package, ShoppingCart, Plus, Check, Sparkles } from "lucide-react";
@@ -19,27 +19,27 @@ interface ProductBundlesSectionProps {
 }
 
 export function ProductBundlesSection({ productId, className }: ProductBundlesSectionProps) {
-  const bundlesPromise = getProductBundles(productId);
+  const [bundles, setBundles] = useState<ProductBundle[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  return (
-    <Suspense fallback={<ProductBundlesSkeleton />}>
-      <ProductBundlesContent bundlesPromise={bundlesPromise} className={className} />
-    </Suspense>
-  );
-}
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    getProductBundles(productId)
+      .then((data) => {
+        if (!cancelled) setBundles(data);
+      })
+      .catch(() => {
+        if (!cancelled) setBundles([]);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => { cancelled = true; };
+  }, [productId]);
 
-async function ProductBundlesContent({
-  bundlesPromise,
-  className,
-}: {
-  bundlesPromise: Promise<ProductBundle[]>;
-  className?: string;
-}) {
-  const bundles = await bundlesPromise;
-
-  if (!bundles || bundles.length === 0) {
-    return null;
-  }
+  if (loading) return <ProductBundlesSkeleton />;
+  if (!bundles || bundles.length === 0) return null;
 
   return (
     <div className={cn("space-y-4", className)}>

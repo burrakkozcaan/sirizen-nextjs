@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Heart,
   Star,
@@ -18,10 +19,11 @@ import type { Product, Badge, SocialProof } from "@/types";
 import { Badge as BadgeUI } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useFavorites } from "@/contexts/FavoritesContext";
-import { QuickViewModal } from "./QuickViewModal";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { resolveMediaUrl } from "@/lib/media";
+
+const QuickViewModal = lazy(() => import("./QuickViewModal").then(m => ({ default: m.QuickViewModal })));
 
 interface ProductCardProps {
   product: Product;
@@ -329,10 +331,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
             {/* Image Slider */}
             <div className="relative w-full h-full">
               {displayImages.length > 0 ? (
-                <img
-                  src={resolveMediaUrl(displayImages[currentImageIndex]?.url) || ""}
+                <Image
+                  src={resolveMediaUrl(displayImages[currentImageIndex]?.url) || "/placeholder-product.png"}
                   alt={product.title || product.name || "Product"}
-                  className="w-full h-full object-cover transition-opacity duration-200"
+                  fill
+                  sizes="(max-width: 640px) 160px, 180px"
+                  className="object-cover transition-opacity duration-200"
                   loading="lazy"
                 />
               ) : (
@@ -348,10 +352,14 @@ export function ProductCard({ product, className }: ProductCardProps) {
               <div className="flex flex-col gap-1">
                 {/* Stamp Image */}
                 {product.stamp_image && (
-                  <img
+                  <Image
                     src={resolveMediaUrl(product.stamp_image)}
                     alt="Damga"
+                    width={40}
+                    height={40}
+                    sizes="40px"
                     className="w-10 h-auto"
+                    loading="lazy"
                   />
                 )}
 
@@ -559,12 +567,16 @@ export function ProductCard({ product, className }: ProductCardProps) {
         </Link>
       </div>
 
-      {/* Quick View Modal */}
-      <QuickViewModal
-        product={product}
-        open={quickViewOpen}
-        onOpenChange={setQuickViewOpen}
-      />
+      {/* Quick View Modal - Lazy loaded */}
+      {quickViewOpen && (
+        <Suspense fallback={null}>
+          <QuickViewModal
+            product={product}
+            open={quickViewOpen}
+            onOpenChange={setQuickViewOpen}
+          />
+        </Suspense>
+      )}
     </>
   );
 }

@@ -13,7 +13,7 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
 
   return (
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-3">
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <Link
           key={category.id}
           href={`/category/${category.slug}`}
@@ -24,6 +24,8 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
               src={category.image || 'https://placehold.co/400x400?text=Category'}
               alt={category.name}
               fill
+              priority={index < 9}
+              loading={index < 9 ? "eager" : "lazy"}
               className="object-cover group-hover:scale-105 transition-transform duration-300"
               sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, (max-width: 1024px) 16.67vw, 11vw"
             />
