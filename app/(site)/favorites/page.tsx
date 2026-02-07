@@ -55,7 +55,7 @@ export default function FavoritesPage() {
       case "price_high":
         return b.price - a.price;
       case "name":
-        return a.name.localeCompare(b.name);
+        return (a.name || '').localeCompare(b.name || '');
       case "discount": {
         const discountA = a.original_price
           ? (a.original_price - a.price) / a.original_price

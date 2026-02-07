@@ -311,11 +311,11 @@ export function AddToCartPopup({
                   </h3>
                 </div>
                 {/* Free Shipping Info */}
-                {seller?.shipping_speed?.free_shipping_threshold && (
+                {seller?.shipping_speed?.same_day_shipping && (
                   <div className="flex items-center gap-1 text-xs text-gray-600">
                     <Truck className="h-3 w-3" />
                     <span>
-                      {formatPrice(seller.shipping_speed.free_shipping_threshold)} ve Üzeri Kargo Bedava
+                      Aynı Gün Kargo
                     </span>
                   </div>
                 )}
@@ -357,9 +357,7 @@ export function AddToCartPopup({
                       const isSelected = effectiveSelectedColor === colorValue.value;
                       const colorImage = variantConfig?.combinations?.find(v => 
                         v.attributes[effectiveColorKey || 'renk'] === colorValue.value
-                      )?.image || core.images?.find(img => 
-                        img.alt?.toLowerCase().includes(colorValue.value.toLowerCase())
-                      )?.url;
+                      )?.image || core.images?.[0]?.url;
                       
                       return (
                         <button
@@ -417,7 +415,7 @@ export function AddToCartPopup({
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {sizeVariants.map((variant) => {
-                      const variantValue = variant.value || Object.values(variant.attributes || {})[0] || `Varyant ${variant.id}`;
+                      const variantValue = ('value' in variant ? variant.value : undefined) || Object.values(('attributes' in variant ? variant.attributes : {}) || {})[0] || `Varyant ${variant.id}`;
                       const isSelected = variant.id === selectedVariantId;
                       const isOutOfStock = (variant.stock || 0) === 0;
                       return (

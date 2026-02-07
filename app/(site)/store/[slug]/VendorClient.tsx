@@ -157,13 +157,13 @@ export function VendorClient({ vendor, productsPromise }: VendorClientProps) {
     // Price filter
     if (filters.minPrice !== null) {
       result = result.filter((p) => {
-        const price = p.discount_price || p.price;
+        const price = p.price;
         return price >= filters.minPrice!;
       });
     }
     if (filters.maxPrice !== null) {
       result = result.filter((p) => {
-        const price = p.discount_price || p.price;
+        const price = p.price;
         return price <= filters.maxPrice!;
       });
     }
@@ -186,10 +186,10 @@ export function VendorClient({ vendor, productsPromise }: VendorClientProps) {
     // Sorting
     switch (sortBy) {
       case "price_asc":
-        result.sort((a, b) => (a.discount_price || a.price) - (b.discount_price || b.price));
+        result.sort((a, b) => a.price - b.price);
         break;
       case "price_desc":
-        result.sort((a, b) => (b.discount_price || b.price) - (a.discount_price || a.price));
+        result.sort((a, b) => b.price - a.price);
         break;
       case "newest":
         result.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());

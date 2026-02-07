@@ -540,7 +540,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
             {/* Price Row: Discount Badge + Sale Price + Strikethrough */}
             <div className="flex items-center gap-1.5 mt-auto flex-wrap">
-              {product.discount_percentage > 0 && (
+              {product.discount_percentage && product.discount_percentage > 0 && (
                 <div className="bg-red-500 text-white text-[10px] font-bold px-1 py-0.5 rounded">
                   -{product.discount_percentage}%
                 </div>

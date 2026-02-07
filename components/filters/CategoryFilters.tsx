@@ -8,6 +8,10 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import type { FilterConfig, FilterOption } from "@/types/pdp-engine";
 
+function getFilterKey(f: FilterConfig): string {
+  return f.attribute_key || f.display_label;
+}
+
 interface CategoryFiltersProps {
   filters: FilterConfig[];
   onFilterChange: (filters: Record<string, string[]>) => void;
@@ -32,7 +36,7 @@ export function CategoryFilters({
     // Başlangıçta kapalı olması gereken filtreler
     const collapsed = filters
       .filter((f) => f.is_collapsed)
-      .map((f) => f.key);
+      .map((f) => f.attribute_key || f.display_label);
     return new Set(collapsed);
   });
 
@@ -99,13 +103,13 @@ export function CategoryFilters({
           <FilterGroup
             key={filter.id}
             filter={filter}
-            isExpanded={!expandedFilters.has(filter.key)}
-            selectedValues={localFilters[filter.key] || []}
-            onToggle={() => toggleFilter(filter.key)}
+            isExpanded={!expandedFilters.has(getFilterKey(filter))}
+            selectedValues={localFilters[getFilterKey(filter)] || []}
+            onToggle={() => toggleFilter(getFilterKey(filter))}
             onOptionChange={(value, checked) =>
-              handleOptionChange(filter.key, value, checked)
+              handleOptionChange(getFilterKey(filter), value, checked)
             }
-            onRangeChange={(value) => handleRangeChange(filter.key, value)}
+            onRangeChange={(value) => handleRangeChange(getFilterKey(filter), value)}
           />
         ))}
       </div>

@@ -215,7 +215,7 @@ function buildVariantConfig(product: any, categoryGroup: string) {
         {
           key: 'beden',
           label: 'Beden',
-          type: 'size',
+          type: 'size' as const,
           values: sizes.map(size => ({
             value: size,
             label: size,
@@ -226,7 +226,7 @@ function buildVariantConfig(product: any, categoryGroup: string) {
         {
           key: 'renk',
           label: 'Renk',
-          type: 'color',
+          type: 'color' as const,
           values: colors.map(color => ({
             value: color.value,
             label: color.label,
@@ -251,7 +251,7 @@ function buildVariantConfig(product: any, categoryGroup: string) {
         {
           key: 'depolama',
           label: 'Depolama',
-          type: 'select',
+          type: 'select' as const,
           values: storages.map((storage, idx) => ({
             value: storage,
             label: storage,
@@ -382,7 +382,7 @@ function buildAllBlocks(): PdpBlock[] {
     { block: 'seller_info', position: 'main', order: 10, visible: true },
     { block: 'description', position: 'main', order: 11, visible: true },
     { block: 'attributes', position: 'main', order: 12, visible: true },
-    { block: 'related_products', position: 'bottom', order: 13, visible: true },
+    { block: 'related_products', position: 'main', order: 13, visible: true },
   ];
 }
 

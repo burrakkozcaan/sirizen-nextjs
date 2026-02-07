@@ -21,7 +21,7 @@ export default async function ItemReviewPage({
     notFound();
   }
 
-  const item = result.data.items.find((i) => i.id === Number(itemId));
+  const item = result.data.items.find((i: { id: number }) => i.id === Number(itemId));
   if (!item) {
     notFound();
   }

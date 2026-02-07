@@ -98,7 +98,7 @@ export function OrdersClient({
     staleTime: 0, // Always fetch fresh data
     refetchOnMount: true,
     refetchOnWindowFocus: true,
-    cacheTime: 0, // Don't cache at all
+    gcTime: 0, // Don't cache at all
   });
 
   const { data: countsData, refetch: refetchCounts } = useQuery({
@@ -139,7 +139,7 @@ export function OrdersClient({
     }
     return true; // Show all orders for other tabs
   });
-  const statusCounts = countsData || {};
+  const statusCounts: Record<string, number> = countsData || {};
   
   // Helper function to get status label safely
   const getStatusLabel = (status: string | undefined): string => {
@@ -340,7 +340,7 @@ export function OrdersClient({
                   // Debug: Log order data
                   if (order.order_number) {
                     console.log(`Order ${order.order_number} (${order.status}):`, {
-                      items: order.items?.map(item => ({
+                      items: order.items?.map((item: any) => ({
                         product_id: item.product?.id,
                         product_title: item.product?.title || item.product?.name,
                         product_images: item.product?.images,
@@ -378,7 +378,7 @@ export function OrdersClient({
                     {/* Order Items */}
                     <div className="p-4">
                       <div className="space-y-3">
-                        {order.items.slice(0, 2).map((item) => (
+                        {order.items.slice(0, 2).map((item: any) => (
                           <div key={item.id} className="flex gap-4">
                             <Link href={`/product/${item.product.slug || item.product.id}`}>
                               <Image

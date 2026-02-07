@@ -74,7 +74,7 @@ export function CartModalBlockRenderer({
 
           return (
             <div key={`${block.block}-${block.order}`} data-block={block.block}>
-              <BlockComponent {...props} />
+              <BlockComponent {...props as any} />
             </div>
           );
         })}

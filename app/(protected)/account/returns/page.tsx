@@ -201,7 +201,7 @@ export default function ReturnsPage() {
                         src={
                           returnRequest.orderItem.product.images?.[0]?.url || ""
                         }
-                        alt={returnRequest.orderItem.product.name}
+                        alt={returnRequest.orderItem.product.name || ''}
                         width={80}
                         height={80}
                         className="w-20 h-20 object-cover rounded-lg"
@@ -214,7 +214,7 @@ export default function ReturnsPage() {
                           {returnRequest.orderItem.product.name}
                         </Link>
                         <p className="text-sm text-muted-foreground">
-                          {returnRequest.orderItem.product.brand} • Adet:{" "}
+                          {typeof returnRequest.orderItem.product.brand === 'string' ? returnRequest.orderItem.product.brand : returnRequest.orderItem.product.brand?.name} • Adet:{" "}
                           {returnRequest.orderItem.quantity}
                         </p>
                         <p className="text-sm text-muted-foreground mt-1">

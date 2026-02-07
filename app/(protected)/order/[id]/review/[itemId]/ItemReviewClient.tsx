@@ -232,7 +232,7 @@ export function ItemReviewClient({ order, item }: ItemReviewClientProps) {
                     <Link href={`/product/${item.product.slug}`}>
                       <Image
                         src={item.product.images[0]?.url || ""}
-                        alt={item.product.name}
+                        alt={item.product.name || ''}
                         width={80}
                         height={80}
                         className="w-20 h-20 object-cover rounded-lg"
@@ -246,7 +246,7 @@ export function ItemReviewClient({ order, item }: ItemReviewClientProps) {
                         {item.product.name}
                       </Link>
                       <p className="text-sm text-muted-foreground mt-1">
-                        {item.product.brand}
+                        {typeof item.product.brand === 'string' ? item.product.brand : item.product.brand?.name}
                       </p>
                       <Link
                         href={`/store/${item.vendor.slug}`}

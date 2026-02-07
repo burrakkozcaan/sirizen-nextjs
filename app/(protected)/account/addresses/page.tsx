@@ -1,5 +1,7 @@
 "use client";
 
+// This is a protected route that requires authentication
+// It cannot be prerendered because it accesses localStorage and requires auth check
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {

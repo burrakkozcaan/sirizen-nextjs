@@ -614,7 +614,7 @@ export function OrderTrackingClient({ order: initialOrder }: OrderTrackingClient
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {order.items.slice(0, 2).map((item) => (
+                  {order.items.slice(0, 2).map((item: any) => (
                     <div key={item.id} className="flex gap-3">
                       <Image
                         src={item.product.images?.[0]?.url || ""}

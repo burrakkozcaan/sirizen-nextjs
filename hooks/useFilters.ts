@@ -46,7 +46,7 @@ export function useFilters({ categorySlug, campaignSlug, filterType = 'category'
         const baseKey = key.slice(0, -2);
         const existing = values[baseKey];
         if (Array.isArray(existing)) {
-          existing.push(value);
+          (existing as string[]).push(value);
         } else {
           values[baseKey] = [value];
         }
@@ -214,8 +214,8 @@ export function useFilters({ categorySlug, campaignSlug, filterType = 'category'
             const option = filterConfig?.options?.find(o => o.value === v);
             activeFilters.push({
               key,
-              label: option?.label || v,
-              value: v,
+              label: option?.label || String(v),
+              value: String(v),
               filterLabel,
             });
           });
@@ -280,7 +280,7 @@ export function useFilters({ categorySlug, campaignSlug, filterType = 'category'
           }
         } else {
           // Array - send each value
-          value.forEach(v => params.append(`${key}[]`, v));
+          value.forEach(v => params.append(`${key}[]`, String(v)));
         }
       } else if (typeof value === 'boolean') {
         params.set(key, 'true');

@@ -727,6 +727,7 @@ export const mockOrders: Order[] = [
         variant_id: 2,
         variant: mockProducts[0].variants![1],
         quantity: 2,
+        unit_price: 149.99,
         price: 149.99,
         total: 299.98,
         status: 'delivered',

@@ -99,7 +99,7 @@ export function PdpBlockRenderer({
 
   return (
     <div className="pdp-block mb-6" data-block={block.block} data-position={block.position}>
-      <BlockComponent {...props} />
+      <BlockComponent {...(props as any)} />
     </div>
   );
 }
@@ -130,7 +130,7 @@ function getBlockProps(
     case 'badges':
       return { badges };
     case 'social_proof':
-      return { product, socialProof };
+      return { product, socialProof: socialProof ?? null };
     case 'variant_selector':
     case 'size_selector':
       return { product };
@@ -151,6 +151,6 @@ function getBlockProps(
     case 'bundles':
       return { productId: product.id };
     default:
-      return { product, badges, highlights, socialProof, config };
+      return { product, badges, highlights, socialProof: socialProof ?? null, config };
   }
 }

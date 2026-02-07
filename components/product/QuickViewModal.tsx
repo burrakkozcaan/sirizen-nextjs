@@ -169,7 +169,7 @@ export function QuickViewModal({ product, open, onOpenChange }: QuickViewModalPr
                   </span>
                 </div>
                 <span className="text-sm text-muted-foreground">
-                  ({(product.review_count || product.reviews_count || 0).toLocaleString('tr-TR')} değerlendirme)
+                  ({(product.review_count || product.review_count || 0).toLocaleString('tr-TR')} değerlendirme)
                 </span>
               </div>
             </div>

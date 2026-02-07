@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 export interface MenuBarItem {
-  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+  icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement;
   label: string;
   path?: string;
   badge?: number;
@@ -44,7 +44,7 @@ export function MenuBar({ items, className, ...props }: MenuBarProps) {
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 26 }}
       className={cn("relative", className)}
-      {...props}
+      {...(props as any)}
     >
       <nav
         role="navigation"

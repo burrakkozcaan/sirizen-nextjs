@@ -33,7 +33,7 @@ interface FamilyDrawerContextValue {
   view: string;
   setView: (view: string) => void;
   opacityDuration: number;
-  elementRef: React.RefObject<HTMLDivElement>;
+  elementRef: React.RefObject<HTMLDivElement | null>;
   bounds: { height: number; width: number };
   views: ViewsRegistry | undefined;
 }
@@ -257,7 +257,7 @@ function FamilyDrawerContent({
     return (
       <Drawer.Content
         asChild
-        direction={direction}
+        {...({ direction } as any)}
         className={clsx(
           "fixed inset-x-4 bottom-4 z-10 mx-auto max-w-[361px] overflow-hidden rounded-[36px] bg-background outline-none md:mx-auto md:w-full",
           className
@@ -271,7 +271,7 @@ function FamilyDrawerContent({
   return (
     <Drawer.Content
       asChild
-      direction={direction}
+        {...({ direction } as any)}
       className={clsx(
         "fixed inset-x-4 bottom-4 z-10 mx-auto max-w-[361px] overflow-hidden rounded-[36px] bg-background outline-none md:mx-auto md:w-full",
         className

@@ -1,6 +1,10 @@
 import type { Product, PaginatedResponse, ProductFilters, SearchSuggestion } from '@/types';
 import { mockProducts, mockCategories, allProducts } from '@/data/mock-data';
 
+function getBrandName(brand: Product['brand']): string {
+  return typeof brand === 'string' ? brand : brand.name;
+}
+
 // Simulated API delay
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -23,7 +27,7 @@ export const productService = {
     }
 
     if (filters.brand && filters.brand.length > 0) {
-      filtered = filtered.filter(p => filters.brand!.includes(p.brand));
+      filtered = filtered.filter(p => filters.brand!.includes(getBrandName(p.brand)));
     }
 
     if (filters.min_price !== undefined) {
@@ -53,8 +57,8 @@ export const productService = {
     if (filters.search) {
       const searchLower = filters.search.toLowerCase();
       filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(searchLower) ||
-        p.brand.toLowerCase().includes(searchLower) ||
+        (p.name || '').toLowerCase().includes(searchLower) ||
+        getBrandName(p.brand).toLowerCase().includes(searchLower) ||
         p.description.toLowerCase().includes(searchLower)
       );
     }
@@ -128,8 +132,8 @@ export const productService = {
     const queryLower = query.toLowerCase();
     return allProducts
       .filter(p =>
-        p.name.toLowerCase().includes(queryLower) ||
-        p.brand.toLowerCase().includes(queryLower)
+        (p.name || '').toLowerCase().includes(queryLower) ||
+        getBrandName(p.brand).toLowerCase().includes(queryLower)
       )
       .slice(0, limit);
   },
@@ -144,14 +148,14 @@ export const productService = {
 
     // Product suggestions
     const products = allProducts
-      .filter(p => p.name.toLowerCase().includes(queryLower))
+      .filter(p => (p.name || '').toLowerCase().includes(queryLower))
       .slice(0, 4);
-    
+
     products.forEach(p => {
       suggestions.push({
         type: 'product',
         id: p.id,
-        name: p.name,
+        name: p.name || '',
         slug: p.slug,
         image: p.images[0]?.url,
       });
@@ -173,13 +177,13 @@ export const productService = {
     });
 
     // Brand suggestions
-    const brands = [...new Set(allProducts.map(p => p.brand))];
+    const brands = [...new Set(allProducts.map(p => getBrandName(p.brand)))];
     const matchingBrands = brands
       .filter(b => b.toLowerCase().includes(queryLower))
       .slice(0, 2);
 
     matchingBrands.forEach(b => {
-      const product = allProducts.find(p => p.brand === b);
+      const product = allProducts.find(p => getBrandName(p.brand) === b);
       suggestions.push({
         type: 'brand',
         id: 0,

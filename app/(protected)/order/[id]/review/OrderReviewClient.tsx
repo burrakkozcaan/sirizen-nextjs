@@ -55,7 +55,7 @@ export function OrderReviewClient({ order }: OrderReviewClientProps) {
                 <div className="flex gap-4">
                   <Image
                     src={item.product.images?.[0]?.url || ""}
-                    alt={item.product.name}
+                    alt={item.product.name || ''}
                     width={120}
                     height={120}
                     className="w-24 h-24 object-cover rounded-lg"
@@ -65,7 +65,7 @@ export function OrderReviewClient({ order }: OrderReviewClientProps) {
                       {item.product.name}
                     </h3>
                     <p className="text-sm text-muted-foreground mb-4">
-                      {item.product.brand} • Adet: {item.quantity}
+                      {typeof item.product.brand === 'string' ? item.product.brand : item.product.brand?.name} • Adet: {item.quantity}
                     </p>
                     <Link href={`/order/${order.id}/review/${item.id}`}>
                       <Button className="gap-2">

@@ -45,7 +45,7 @@ export function PriceAlertModal({ product, open, onOpenChange }: PriceAlertModal
   const handleSetAlert = () => {
     addAlert({
       productId: product.id,
-      productName: product.name,
+      productName: product.name || product.title || '',
       productImage: product.images[0]?.url || '',
       targetPrice,
       currentPrice: product.price,
@@ -81,7 +81,7 @@ export function PriceAlertModal({ product, open, onOpenChange }: PriceAlertModal
               className="w-20 h-20 rounded-lg object-cover"
             />
             <div className="flex-1 min-w-0">
-              <p className="text-xs font-semibold text-primary uppercase">{product.brand}</p>
+              <p className="text-xs font-semibold text-primary uppercase">{typeof product.brand === 'string' ? product.brand : product.brand?.name || ''}</p>
               <p className="text-sm font-medium line-clamp-2">{product.name}</p>
               <p className="text-lg font-bold text-primary mt-1">
                 {formatPrice(product.price)}

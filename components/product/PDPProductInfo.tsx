@@ -115,26 +115,8 @@ export function PDPProductInfo({
   const hasPriceAlert = hasAlert(productId);
 
   const handleAddToCart = () => {
-    setIsAddingToCart(true);
-    setIsAddedToCart(false);
-    
-    addItem({
-      product_id: productId,
-      variant_id: selectedVariantId || pricing.variant_id,
-      quantity: quantity,
-    });
-    
-    // Simulate API call delay
-    setTimeout(() => {
-      setIsAddingToCart(false);
-      setIsAddedToCart(true);
-      
-      // Auto close after 2 seconds
-      setTimeout(() => {
-        setAddToCartPopupOpen(false);
-        setIsAddedToCart(false);
-      }, 2000);
-    }, 500);
+    // This function opens the AddToCartPopup which handles the actual add to cart
+    handleOpenAddToCartPopup();
   };
 
   const handleOpenAddToCartPopup = () => {
@@ -355,7 +337,7 @@ export function PDPProductInfo({
 
       {/* Sales Proof */}
       <div className="mt-3 text-xs text-gray-600 flex items-center gap-1">
-        🚀 <span className="font-bold text-orange-500">3 günde {Math.floor(engagement?.purchase_count / 30) || 127} ürün</span> satıldı!
+        🚀 <span className="font-bold text-orange-500">3 günde {Math.floor((engagement?.purchase_count || 0) / 30) || 127} ürün</span> satıldı!
       </div>
 
       {/* Social Proof Badges */}
@@ -551,7 +533,7 @@ export function PDPProductInfo({
           core,
           pricing,
           engagement,
-          seller,
+          seller: seller ?? null,
         }}
         sellers={sellers}
         selectedVariantId={selectedVariantId}

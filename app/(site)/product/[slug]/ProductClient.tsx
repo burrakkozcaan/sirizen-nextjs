@@ -291,7 +291,7 @@ export function ProductClient({ data }: ProductClientProps) {
                   router.push(`/login?redirect=${encodeURIComponent(pathname)}`);
                   return;
                 }
-                toggleFavorite(product.id);
+                toggleFavorite(product as any);
               }}
                 onImageClick={handleImageClick}
               />
@@ -315,7 +315,7 @@ export function ProductClient({ data }: ProductClientProps) {
                   router.push(`/login?redirect=${encodeURIComponent(pathname)}`);
                   return;
                 }
-                toggleFavorite(product.id);
+                toggleFavorite(product as any);
               }}
               onAddToCart={handleOpenAddToCartPopup}
               onPriceAlertClick={() => setPriceAlertOpen(true)}
@@ -351,6 +351,7 @@ export function ProductClient({ data }: ProductClientProps) {
                   response_time: vendors[0].response_time || '24 saat',
                   review_count: vendors[0].review_count || 0,
                   years_on_platform: vendors[0].years_on_platform || 0,
+                  created_at: '',
                 } : undefined}
                 sellers={sellersData}
               />
@@ -756,7 +757,7 @@ export function ProductClient({ data }: ProductClientProps) {
 
         {/* Similar Products */}
         <div className="mt-8">
-          <RelatedProducts productId={product.id} categoryId={product.category.id} />
+          <RelatedProducts product={{ slug: product.slug }} />
         </div>
 
         {/* Recently Viewed */}
@@ -830,7 +831,7 @@ export function ProductClient({ data }: ProductClientProps) {
           quantity={quantity}
           onQuantityChange={setQuantity}
           isFavorite={isFav}
-          onToggleFavorite={() => toggleFavorite(product.id)}
+          onToggleFavorite={() => toggleFavorite(product as any)}
           onAddToCart={handleOpenAddToCartPopup}
           currentPrice={finalPrice}
           originalPrice={originalPrice}

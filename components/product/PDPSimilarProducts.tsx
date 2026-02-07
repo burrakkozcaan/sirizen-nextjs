@@ -24,15 +24,17 @@ export function PDPSimilarProducts({
 
   return (
     <Suspense fallback={<PDPSimilarProductsSkeleton />}>
-      <PDPSimilarProductsContent productsPromise={productsPromise} />
+      <PDPSimilarProductsContent productsPromise={productsPromise} type={type} />
     </Suspense>
   );
 }
 
 async function PDPSimilarProductsContent({
   productsPromise,
+  type,
 }: {
   productsPromise: Promise<Product[]>;
+  type: "similar" | "related";
 }) {
   const products = await productsPromise;
 

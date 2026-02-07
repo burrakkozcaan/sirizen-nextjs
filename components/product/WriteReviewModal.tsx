@@ -135,7 +135,7 @@ export function WriteReviewModal({ open, onOpenChange, product }: WriteReviewMod
               className="w-16 h-16 object-cover rounded-lg"
             />
             <div className="flex-1 min-w-0">
-              <p className="text-sm text-muted-foreground">{product.brand}</p>
+              <p className="text-sm text-muted-foreground">{typeof product.brand === 'string' ? product.brand : product.brand?.name || ''}</p>
               <p className="font-medium line-clamp-2">{product.name}</p>
             </div>
           </div>

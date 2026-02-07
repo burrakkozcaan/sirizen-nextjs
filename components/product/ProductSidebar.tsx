@@ -194,7 +194,7 @@ export function ProductSidebar({ product, vendor, sellers }: ProductSidebarProps
                 {vendorData.is_official && (
                   <ShieldCheck className="h-4 w-4 text-primary" />
                 )}
-                <SellerRatingPopup vendor={vendorData}>
+                <SellerRatingPopup vendor={vendorData as any}>
                   <Badge 
                     variant="secondary" 
                     className="bg-green-100 text-green-700 text-xs cursor-pointer hover:bg-green-200 transition-colors"

@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
       ...(backendUrl
         ? [
             {
-              protocol: backendUrl.protocol.replace(":", ""),
+              protocol: backendUrl.protocol.replace(":", "") as "http" | "https",
               hostname: backendUrl.hostname,
               ...(backendUrl.port ? { port: backendUrl.port } : {}),
               pathname: "/**",

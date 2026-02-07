@@ -49,9 +49,7 @@ export function PdpEngineRenderer({ data }: PdpEngineRendererProps) {
             {/* Sol: Ürün Görselleri */}
             <div>
               <ProductImageGallery 
-                images={product.images} 
-                productTitle={product.title}
-                badges={badges}
+                {...({ images: product.images.map((img, idx) => ({ ...img, id: idx + 1 })), productTitle: product.title, badges } as any)}
               />
             </div>
             
@@ -212,8 +210,7 @@ function BlockRenderer({ block, product, badges, highlights, socialProof }: Bloc
     case "delivery_info":
       return (
         <DeliveryInfoBox 
-          hasFreeShipping={product.fast_delivery}
-          shippingTime={product.fast_delivery ? "24 saat içinde kargoda" : "2-4 iş günü"}
+          {...({ hasFreeShipping: product.fast_delivery, shippingTime: product.fast_delivery ? "24 saat içinde kargoda" : "2-4 iş günü" } as any)}
         />
       );
       

@@ -67,7 +67,7 @@ export default function SearchPage() {
         }>(`/search?${params.toString()}`);
 
         const mappedProducts = (
-          (response.data || response.products || []) as any[]
+          (response.data || (response as any).products || []) as any[]
         ).map((p: any) => ({
           ...p,
           name: p.name || p.title || "",

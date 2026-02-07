@@ -1,4 +1,7 @@
-import { Navigate, useLocation } from 'react-router-dom';
+"use client";
+
+import { useRouter, usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Loader2 } from 'lucide-react';
 
@@ -8,7 +11,14 @@ interface ProtectedRouteProps {
 
 export function ProtectedRoute({ children }: ProtectedRouteProps) {
   const { isAuthenticated, isLoading } = useAuth();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      router.replace(`/giris?from=${encodeURIComponent(pathname)}`);
+    }
+  }, [isLoading, isAuthenticated, router, pathname]);
 
   if (isLoading) {
     return (
@@ -19,8 +29,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
   }
 
   if (!isAuthenticated) {
-    // Redirect to login, saving the attempted location
-    return <Navigate to="/giris" state={{ from: location.pathname }} replace />;
+    return null;
   }
 
   return <>{children}</>;

@@ -19,12 +19,14 @@ import {
   Truck,
   RotateCcw,
   ShieldCheck,
+  TicketPercent,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
+import { claimCoupon } from '@/actions/coupon.actions';
 
 interface ProductVariant {
   id: number;
@@ -175,7 +177,7 @@ export function ProductInfoSection({
           </span>
         </button>
         <Link href="#reviews" className="text-muted-foreground hover:text-primary">
-          {(product.review_count || product.reviews_count || 0).toLocaleString('tr-TR')} Değerlendirme
+          {Number(product.review_count || 0).toLocaleString('tr-TR')} Değerlendirme
         </Link>
         <span className="text-muted-foreground">|</span>
         <Link href="#qa" className="text-muted-foreground hover:text-primary">

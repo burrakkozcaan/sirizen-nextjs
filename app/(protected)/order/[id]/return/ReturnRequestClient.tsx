@@ -173,7 +173,7 @@ export function ReturnRequestClient({ order }: ReturnRequestClientProps) {
                       />
                       <Image
                         src={item.product.images?.[0]?.url || ""}
-                        alt={item.product.name}
+                        alt={item.product.name || ''}
                         width={64}
                         height={64}
                         className="w-16 h-16 object-cover rounded"
@@ -183,7 +183,7 @@ export function ReturnRequestClient({ order }: ReturnRequestClientProps) {
                           {item.product.name}
                         </h3>
                         <p className="text-sm text-muted-foreground">
-                          {item.product.brand} • Adet: {item.quantity}
+                          {typeof item.product.brand === 'string' ? item.product.brand : item.product.brand?.name} • Adet: {item.quantity}
                         </p>
                       </div>
                       <p className="font-semibold">{formatPrice(item.total)}</p>

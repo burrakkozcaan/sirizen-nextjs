@@ -33,7 +33,7 @@ export function DailyDeals({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
   const { addItem } = useCart();
 
   useEffect(() => {
@@ -92,10 +92,10 @@ export function DailyDeals({
     e.preventDefault();
     e.stopPropagation();
     if (isFavorite(product.id)) {
-      removeFromFavorites(product.id);
+      removeFavorite(product.id);
       toast.success("Favorilerden kaldırıldı");
     } else {
-      addToFavorites(product);
+      addFavorite(product);
       toast.success("Favorilere eklendi");
     }
   };
@@ -104,7 +104,7 @@ export function DailyDeals({
     e.preventDefault();
     e.stopPropagation();
     try {
-      await addItem(product.id, 1);
+      addItem(product, 1);
       toast.success("Sepete eklendi");
     } catch (error) {
       toast.error("Sepete eklenemedi");
