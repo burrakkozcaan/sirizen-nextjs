@@ -37,7 +37,6 @@ const CATEGORY_ICON_BY_SLUG: Record<string, string> = {
   spor: "⚽",
   "ev-dekorasyon": "🖼️",
   "mutfak": "🍳",
-  "elektronik": "📱",
   "bilgisayar": "💻",
   "telefon": "📱",
   "oyuncak": "🧸",
