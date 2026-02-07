@@ -157,18 +157,19 @@ function PriceBadgesRotating({
   badges: { label: string; type: string }[];
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const filteredBadges = (badges || []).filter((b) => b.label != null && String(b.label).trim() !== "" && String(b.label) !== "0");
 
   useEffect(() => {
-    if (badges.length <= 1) return;
+    if (filteredBadges.length <= 1) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % badges.length);
+      setCurrentIndex((prev) => (prev + 1) % filteredBadges.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [badges.length]);
+  }, [filteredBadges.length]);
 
-  if (!badges || badges.length === 0) return null;
+  if (filteredBadges.length === 0) return null;
 
   const getTextColor = (type: string) => {
     switch (type) {
@@ -189,7 +190,7 @@ function PriceBadgesRotating({
         className="flex flex-col transition-transform duration-300"
         style={{ transform: `translateY(-${currentIndex * 12}px)` }}
       >
-        {badges.map((badge, index) => (
+        {filteredBadges.map((badge, index) => (
           <p
             key={index}
             className={cn(
@@ -529,7 +530,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
             {/* Price Badges - Rotating (above price) */}
             {(product.price_badges && product.price_badges.length > 0) ? (
               <PriceBadgesRotating badges={product.price_badges} />
-            ) : product.price_badge ? (
+            ) : product.price_badge && product.price_badge.label !== "0" && String(product.price_badge.label).trim() !== "" ? (
               <div className="h-3">
                 <PriceBadgeComponent
                   label={product.price_badge.label}
@@ -538,9 +539,9 @@ export function ProductCard({ product, className }: ProductCardProps) {
               </div>
             ) : null}
 
-            {/* Price Row: Discount Badge + Sale Price + Strikethrough */}
+            {/* Price Row: Discount Badge + Sale Price + Strikethrough (indirim yoksa yüzde gösterilmez) */}
             <div className="flex items-center gap-1.5 mt-auto flex-wrap">
-              {product.discount_percentage && product.discount_percentage > 0 && (
+              {product.discount_percentage > 0 && (
                 <div className="bg-red-500 text-white text-[10px] font-bold px-1 py-0.5 rounded">
                   -{product.discount_percentage}%
                 </div>

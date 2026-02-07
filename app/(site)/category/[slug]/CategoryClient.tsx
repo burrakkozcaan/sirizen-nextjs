@@ -316,7 +316,7 @@ export function CategoryClient({
   };
 
   return (
-    <div className="min-h-screen bg-secondary/30 container mx-auto">
+    <div className="min-h-screen bg-white container mx-auto">
       {/* Breadcrumb */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-3">

@@ -14,6 +14,38 @@ import { cn } from "@/lib/utils";
 import type { Category } from "@/types";
 import { api } from "@/lib/api";
 
+/** Slug / isim bazlı ikon fallback (API icon gelmezse; veritabanındaki icon öncelikli) */
+const CATEGORY_ICON_BY_SLUG: Record<string, string> = {
+  kadin: "👗",
+  erkek: "👔",
+  "anne-cocuk": "👶",
+  "ev-yasam": "🏠",
+  supermarket: "🛒",
+  kozmetik: "💄",
+  "ayakkabi-canta": "👠",
+  elektronik: "📱",
+  "saat-aksesuar": "⌚",
+  "kadin-giyim": "👗",
+  "erkek-giyim": "👔",
+  "bebek-giyim": "👶",
+  "cocuk-giyim": "👕",
+  "spor-giyim": "⚽",
+  "ev-ic-giyim": "🛏️",
+  moda: "👗",
+  giyim: "👕",
+  ev: "🏠",
+  spor: "⚽",
+  "ev-dekorasyon": "🖼️",
+  "mutfak": "🍳",
+  "elektronik": "📱",
+  "bilgisayar": "💻",
+  "telefon": "📱",
+  "oyuncak": "🧸",
+  "kitap": "📚",
+  "takı": "💎",
+  aksesuar: "👜",
+};
+
 interface CategoryDrawerProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -26,20 +58,17 @@ export function CategoryDrawer({ open, onOpenChange }: CategoryDrawerProps) {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const [categoryPath, setCategoryPath] = useState<Category[]>([]);
 
-  // Helper function to find category icon from all categories
+  // Helper: veritabanından gelen icon öncelikli, yoksa slug/isim ile eşleştir
   const getCategoryIcon = (category: Category): string => {
-    // First check if category itself has icon
-    if (category.icon) return category.icon;
-    
-    // Try to find in allCategories by id (most reliable)
-    const foundById = allCategories.find(c => c.id === category.id);
-    if (foundById?.icon) return foundById.icon;
-    
-    // Try to find in allCategories by slug
-    const foundBySlug = allCategories.find(c => c.slug === category.slug);
-    if (foundBySlug?.icon) return foundBySlug.icon;
-    
-    // Recursively search in children of all categories
+    // 1) Kategori kendi icon'una sahipse (API/DB)
+    if (category.icon && String(category.icon).trim() !== "") return category.icon;
+
+    // 2) allCategories içinde id/slug ile bul, icon varsa kullan
+    const foundById = allCategories.find((c) => c.id === category.id);
+    if (foundById?.icon && String(foundById.icon).trim() !== "") return foundById.icon;
+    const foundBySlug = allCategories.find((c) => c.slug === category.slug);
+    if (foundBySlug?.icon && String(foundBySlug.icon).trim() !== "") return foundBySlug.icon;
+
     const findInChildren = (cats: Category[]): string | null => {
       for (const cat of cats) {
         if (cat.id === category.id && cat.icon) return cat.icon;
@@ -51,16 +80,33 @@ export function CategoryDrawer({ open, onOpenChange }: CategoryDrawerProps) {
       }
       return null;
     };
-    
     const foundInChildren = findInChildren(allCategories);
     if (foundInChildren) return foundInChildren;
-    
-    // Fallback: try to get from parent's icon
-    if (category.parent_id && selectedCategory?.icon) {
-      return selectedCategory.icon;
+
+    if (category.parent_id && selectedCategory?.icon) return selectedCategory.icon;
+
+    // 3) Slug ile eşleştir (kadin-giyim -> 👗 vb.)
+    const slug = (category.slug || "").toLowerCase();
+    if (CATEGORY_ICON_BY_SLUG[slug]) return CATEGORY_ICON_BY_SLUG[slug];
+    const slugParts = slug.split("-");
+    for (const part of slugParts) {
+      if (CATEGORY_ICON_BY_SLUG[part]) return CATEGORY_ICON_BY_SLUG[part];
     }
-    
-    // Default fallback
+
+    // 4) İsim anahtar kelime (Giyim, Moda, Elektronik vb.)
+    const name = (category.name || "").toLowerCase();
+    if (name.includes("giyim") || name.includes("moda")) return "👗";
+    if (name.includes("erkek")) return "👔";
+    if (name.includes("kadın") || name.includes("kadin")) return "👗";
+    if (name.includes("çocuk") || name.includes("cocuk") || name.includes("bebek")) return "👶";
+    if (name.includes("ev") || name.includes("yaşam") || name.includes("yasam")) return "🏠";
+    if (name.includes("market") || name.includes("süper")) return "🛒";
+    if (name.includes("kozmetik") || name.includes("güzellik")) return "💄";
+    if (name.includes("ayakkabı") || name.includes("ayakkabi") || name.includes("çanta") || name.includes("canta")) return "👠";
+    if (name.includes("elektronik") || name.includes("telefon")) return "📱";
+    if (name.includes("saat") || name.includes("aksesuar")) return "⌚";
+    if (name.includes("spor")) return "⚽";
+
     return "📦";
   };
 

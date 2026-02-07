@@ -67,7 +67,17 @@ export function QuickViewModal({ product, open, onOpenChange }: QuickViewModalPr
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl p-0 gap-0 overflow-hidden">
+      <DialogContent className="max-w-4xl p-0 gap-0 overflow-hidden [&>button]:hidden">
+        {/* Kapatma butonu - çarpı */}
+        <Button
+          variant="secondary"
+          size="icon"
+          className="absolute top-3 right-3 z-10 h-9 w-9 rounded-full bg-background/90 shadow-md hover:bg-background border"
+          onClick={() => onOpenChange(false)}
+          aria-label="Kapat"
+        >
+          <X className="h-5 w-5" />
+        </Button>
         <DialogHeader className="sr-only">
           <DialogTitle>
             {product.name || product.title} - Hızlı Bakış
