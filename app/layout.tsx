@@ -25,10 +25,6 @@ export const metadata: Metadata = {
   },
   description:
     "Moda, elektronik, ev & yaşam, kozmetik ve daha fazlası — Sirizen'de binlerce mağaza ve milyonlarca ürün. Hızlı teslimat, güvenli ödeme ve kampanyalarla alışverişin keyfini çıkarın.",
-  icons: {
-    icon: "/sirizen-logo.svg",
-    apple: "/sirizen-logo.svg",
-  },
 };
 
 export default function RootLayout({
