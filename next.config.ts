@@ -14,7 +14,6 @@ try {
 }
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
   images: {
     remotePatterns: [
       ...(backendUrl

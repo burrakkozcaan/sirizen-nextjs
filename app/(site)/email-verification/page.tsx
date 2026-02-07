@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
@@ -23,7 +23,7 @@ import { api, ApiError } from "@/lib/api";
 
 type VerificationStatus = "pending" | "verifying" | "success" | "error";
 
-export default function EmailVerificationPage() {
+function EmailVerificationContent() {
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<VerificationStatus>("pending");
   const [email] = useState(
@@ -225,5 +225,24 @@ export default function EmailVerificationPage() {
         )}
       </Card>
     </div>
+  );
+}
+
+export default function EmailVerificationPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/30 p-4">
+        <Card className="w-full max-w-md">
+          <CardHeader className="text-center pb-2">
+            <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
+              <RefreshCw className="h-8 w-8 text-primary animate-spin" />
+            </div>
+            <CardTitle className="text-2xl">Yükleniyor...</CardTitle>
+          </CardHeader>
+        </Card>
+      </div>
+    }>
+      <EmailVerificationContent />
+    </Suspense>
   );
 }

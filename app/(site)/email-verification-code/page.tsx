@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -31,7 +31,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 type VerificationStatus = "pending" | "verifying" | "success" | "error";
 
-export default function EmailVerificationCodePage() {
+function EmailVerificationCodeContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { refreshUser } = useAuth();
@@ -325,5 +325,13 @@ export default function EmailVerificationCodePage() {
         />
       </div>
     </div>
+  );
+}
+
+export default function EmailVerificationCodePage() {
+  return (
+    <Suspense>
+      <EmailVerificationCodeContent />
+    </Suspense>
   );
 }
