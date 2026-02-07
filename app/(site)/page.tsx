@@ -26,6 +26,7 @@ import { getHeroCampaigns } from "@/actions/campaign.actions";
 import { getFeaturedVendors } from "@/actions/vendor.actions";
 import { getVendorCollections } from "@/actions/collection.actions";
 import { getHomeSections } from "@/actions/home.actions";
+import { getSearchTags } from "@/actions/search-tag.actions";
 import { VendorCarousel } from "@/components/home/VendorCarousel";
 import { HomeEngine } from "@/components/home/HomeEngine";
 import { HomeClient } from "./HomeClient";
@@ -191,6 +192,31 @@ async function HomeEngineSection() {
   );
 }
 
+async function SearchTagsSection() {
+  const tags = await getSearchTags();
+  if (tags.length === 0) return null;
+  return (
+    <section className="py-6" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 100px" }}>
+      <div className="bg-white rounded-lg shadow-card ">
+        <h3 className="text-lg font-semibold mb-4">
+          Bunlar da İlginizi Çekebilir
+        </h3>
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <Link
+              key={tag.id}
+              href={tag.url}
+              className="inline-flex items-center px-3 py-1.5 bg-secondary hover:bg-secondary/80 text-sm text-foreground rounded-full border border-border hover:border-primary/30 transition-colors"
+            >
+              {tag.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Main Page ─── */
 export default async function HomePage() {
   // Only fetch above-the-fold data synchronously
@@ -289,42 +315,10 @@ export default async function HomePage() {
           <FeaturedVendorsSection />
         </Suspense>
 
-        {/* Related Tags - Static, renders immediately */}
-        <section className="py-6" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 100px" }}>
-          <div className="bg-white rounded-lg shadow-card ">
-            <h3 className="text-lg font-semibold mb-4">
-              Bunlar da İlginizi Çekebilir
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Moda",
-                "Erkek Modelleri",
-                "Çocuk Ürünleri",
-                "Ev & Yaşam",
-                "Elektronik",
-                "Spor & Outdoor",
-                "Kozmetik",
-                "Ayakkabı",
-                "Çanta",
-                "Saat",
-                "Gözlük",
-                "Takı",
-                "İndirimli Ürünler",
-                "Yeni Sezon",
-                "Kampanyalı Ürünler",
-                "Popüler Markalar",
-              ].map((tag, index) => (
-                <Link
-                  key={index}
-                  href={`/search?q=${encodeURIComponent(tag)}`}
-                  className="inline-flex items-center px-3 py-1.5 bg-secondary hover:bg-secondary/80 text-sm text-foreground rounded-full border border-border hover:border-primary/30 transition-colors"
-                >
-                  {tag}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Related Tags - Streamed from API */}
+        <Suspense fallback={null}>
+          <SearchTagsSection />
+        </Suspense>
 
         {/* Recently Viewed */}
         <RecentlyViewed showClear />

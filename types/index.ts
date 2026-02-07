@@ -303,6 +303,13 @@ export interface QuickLink {
   is_active: boolean;
 }
 
+export interface SearchTag {
+  id: number;
+  label: string;
+  url: string;
+  order: number;
+}
+
 export interface Coupon {
   id: number;
   code: string;
